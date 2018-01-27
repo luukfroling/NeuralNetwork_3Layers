@@ -9,8 +9,8 @@ class neuralNet {
       this.p[i] = new Array(sizes[0]);
       this.firstWeights[i].fill(random()*2-1);
     }
-    for(var i = 0; i < this.firstWeights.length; i++){ //Just some code to truly fill it with random numbers, however this is not necessary as i wrote this
-      for(var j = 0; j < this.firstWeights[i].length; j++){ //to try and explain unusual behaviour, however it was just above my logic.
+    for(var i = 0; i < this.firstWeights.length; i++){ //Create a random weight matrix.
+      for(var j = 0; j < this.firstWeights[i].length; j++){ 
         this.firstWeights[i][j] = random()*2-1;
       }
     }
@@ -24,7 +24,7 @@ class neuralNet {
     this.x = new Array(sizes[0]); //Create x array with the size of the inputs.
     this.y = new Array(sizes[1]); //Create Y array with the size of the hidden layer.
     this.yb = new Array(sizes[1]); //Create for every y node a bias.
-    this.yb.fill(0); // Fill all the biases with 1. Why? no clue. What do we know in life?
+    this.yb.fill(0); // Fill all the biases with 1.
     this.z = new Array(sizes[2]); //Create X array with the outputs.
     this.zb = new Array(sizes[2]); // Biases for all the output nodes.
     this.zb.fill(0); //Same spiel
@@ -61,6 +61,8 @@ class neuralNet {
     this.adjustFirstWeights();
     return this.errorZ;
   }
+  //Looking back on the code I do not use mediumTrain anymore. 
+  //I wrote the function to help and debug the program but decided to just leave it in.
   mediumTrain(input, desired){
     this.run(input);
     this.errorZ = new Array(this.z.length);
